@@ -1,0 +1,96 @@
+<class 'pytorch_lightning.loggers.base.LoggerCollection'>
+Here is the list of contents
+__module__
+pytorch_lightning.loggers.base
+__doc__
+The :class:`LoggerCollection` class is used to iterate all logging actions over the given `logger_iterable`.
+
+    Args:
+        logger_iterable: An iterable collection of loggers
+    
+__init__
+<function LoggerCollection.__init__ at 0x0000021BFC48F160>
+__getitem__
+<function LoggerCollection.__getitem__ at 0x0000021BFC48F1F0>
+after_save_checkpoint
+<function LoggerCollection.after_save_checkpoint at 0x0000021BFC48F280>
+update_agg_funcs
+<function LoggerCollection.update_agg_funcs at 0x0000021BFC48F310>
+experiment
+<property object at 0x0000021BFC48D360>
+agg_and_log_metrics
+<function LoggerCollection.agg_and_log_metrics at 0x0000021BFC48F430>
+log_metrics
+<function LoggerCollection.log_metrics at 0x0000021BFC48F4C0>
+log_hyperparams
+<function LoggerCollection.log_hyperparams at 0x0000021BFC48F550>
+log_graph
+<function LoggerCollection.log_graph at 0x0000021BFC48F5E0>
+log_text
+<function LoggerCollection.log_text at 0x0000021BFC48F670>
+log_image
+<function LoggerCollection.log_image at 0x0000021BFC48F700>
+save
+<function LoggerCollection.save at 0x0000021BFC48F790>
+finalize
+<function LoggerCollection.finalize at 0x0000021BFC48F820>
+close
+<function LoggerCollection.close at 0x0000021BFC48F8B0>
+save_dir
+<property object at 0x0000021BFC48D3B0>
+name
+<property object at 0x0000021BFC48D400>
+version
+<property object at 0x0000021BFC48D450>
+__abstractmethods__
+frozenset()
+_abc_impl
+<_abc._abc_data object at 0x0000021BFC490900>
+<class 'pytorch_lightning.loggers.base.LoggerCollection'>
+Here is the list of contents
+__module__
+pytorch_lightning.loggers.base
+__doc__
+The :class:`LoggerCollection` class is used to iterate all logging actions over the given `logger_iterable`.
+
+    Args:
+        logger_iterable: An iterable collection of loggers
+    
+__init__
+<function LoggerCollection.__init__ at 0x0000025ACE640160>
+__getitem__
+<function LoggerCollection.__getitem__ at 0x0000025ACE6401F0>
+after_save_checkpoint
+<function LoggerCollection.after_save_checkpoint at 0x0000025ACE640280>
+update_agg_funcs
+<function LoggerCollection.update_agg_funcs at 0x0000025ACE640310>
+experiment
+<property object at 0x0000025ACE63D310>
+agg_and_log_metrics
+<function LoggerCollection.agg_and_log_metrics at 0x0000025ACE640430>
+log_metrics
+<function LoggerCollection.log_metrics at 0x0000025ACE6404C0>
+log_hyperparams
+<function LoggerCollection.log_hyperparams at 0x0000025ACE640550>
+log_graph
+<function LoggerCollection.log_graph at 0x0000025ACE6405E0>
+log_text
+<function LoggerCollection.log_text at 0x0000025ACE640670>
+log_image
+<function LoggerCollection.log_image at 0x0000025ACE640700>
+save
+<function LoggerCollection.save at 0x0000025ACE640790>
+finalize
+<function LoggerCollection.finalize at 0x0000025ACE640820>
+close
+<function LoggerCollection.close at 0x0000025ACE6408B0>
+save_dir
+<property object at 0x0000025ACE63D360>
+name
+<property object at 0x0000025ACE63D3B0>
+version
+<property object at 0x0000025ACE63D400>
+__abstractmethods__
+frozenset()
+_abc_impl
+<_abc._abc_data object at 0x0000025ACE63FD80>
