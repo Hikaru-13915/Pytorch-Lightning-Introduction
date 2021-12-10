@@ -197,7 +197,7 @@ PyTorch QAT(QuantizationAwareTraining), PyTorch PTQ(Post Training Quantization),
 
 表中の①②③の確認はそれぞれ、quant_lightning_qat.py、quant_lightning_ptq.py、quant_with_only_lightning.pyを用いて確認した。
 
-# Pytorch-Lightning Introduction(English)
+## **Pytorch-Lightning Introduction(English)**
 
 This repository is for explanation of how to use PyTorch Lightning with simple examples
 
