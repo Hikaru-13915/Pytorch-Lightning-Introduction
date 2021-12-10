@@ -289,7 +289,7 @@ This is the basic usage of PyTorch Lightning.
 
 
 ## callback functions
-PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](#check-point) point and [#QuantizationAwareTraining](QuantizationAwareTraining).
+PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](#check-point) point and [#Quantization-Aware-Training](QuantizationAwareTraining).
 
 ### check point
 The check point is a save function, so to speak, and has some useful features that the familiar PyTorch `torch.save(Model.state_dict(), PATH)` does not have.  
@@ -338,7 +338,7 @@ In `TRIGERS=YOUR_MODEL_TRIGERS`, you can specify the arguments of `__init__()` f
 
 There are many more features of Callback than mentioned above. For details on the rest, run `python callbacks_lightning.py` and look at `callbacks_info`.
 
-### QuantizationAwareTraining
+### Quantization-Aware-Training
 
 This function is based on PyTorch's [Quantization Aware Training](https://pytorch.org/docs/stable/quantization.html#quantization-aware-training).  
 Quantization of the model allows faster inference and reduced memory requirements by computing and storing tensors with bit widths lower than floating point precision (such as INT8 or FLOAT16).  
