@@ -211,7 +211,7 @@ The configuration is as follows.
 - [Basic usage of Lighitning](#Basic-usage-of-Lighitning)
 - [callback function](#callback-functions)
 - [logger function](#logger-functions)
-- [About-Quantization](#About-quantizaton)
+- [About-Quantization](#About-Quantization)
 
 
 ## Basic usage of Lighitning
