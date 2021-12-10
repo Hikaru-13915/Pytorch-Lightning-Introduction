@@ -209,9 +209,9 @@ This repository is for explanation of how to use PyTorch Lightning with simple e
 The configuration is as follows.  
 
 - [Basic usage of Lighitning](#Basic-usage-of-Lighitning)
-- [callback function](#callback-function)
-- [logger function](#logger-function)
-- [About quantization](#About-quantizaton)
+- [callback function](#callback-functions)
+- [logger function](#logger-functions)
+- [About-Quantization](#About-quantizaton)
 
 
 ## Basic usage of Lighitning
@@ -220,7 +220,7 @@ The Basic_usage_of_lightning.py file in this repository describes the basic usag
 The general steps are basically the same as for PyTorch.
 
 - [Model design](#Model-design)
-- [Set up the device and learning environment](#Set-up-the-device-and-learning-environment)
+- [Set up the device and learning environment](#Setting-up-the-device-and-learning-environment)
 - [Start learning](#Start-learning)
 
 Model design is the biggest step in model learning with PyTorchLightning.
@@ -386,7 +386,7 @@ The usage of logger is the same as callback, specify `logger=YOURLOGGER` as an a
 As you can see from this example of how to use the logger to keep logs in CSV and visualize the scores, the logger function can be very useful in research and development depending on customization.  
 
 
-## Quantization
+## About Quantization
 
 For quantization, we need to pay attention to the learning layers that cannot be handled by the 'QuantizedCPU' during the subsequent inference.  
 (e.g., Mnist used unavailable layer, `torch.nn.functional.log_softmax(x, dim=1)`, in `forward()`, so we excluded it.)  
