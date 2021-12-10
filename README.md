@@ -1,6 +1,6 @@
 # PyTorch-Lightning-Introduction
 
-[__*English follows Japanese*__](##English)
+[__*English follows Japanese*__](#English)
 
 本リポジトリは、PyTorch Lightningの使用方法を簡易なexampleソースとともに説明するものであり、  
 構成は以下の通りである。  
@@ -199,8 +199,8 @@ PyTorch QAT(QuantizationAwareTraining), PyTorch PTQ(Post Training Quantization),
 
 
 
-
-### English discription
+---
+## English discription
 
 # Pytorch-Lightning Introduction(English)
 
