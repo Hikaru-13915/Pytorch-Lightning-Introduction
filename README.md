@@ -87,10 +87,10 @@ PyTorch Lightningは非常にカスタマイズ性が高く、その中でもche
 ### check point
 check pointは、いわば保存機能である。PyTorchでお馴染みの`torch.save(Model.state_dict(), PATH)`にない便利な機能がある。  
 check pointの保存とロードの仕方は、それぞれcheck_point_save.py, check_point_load.pyを用いて紹介する。  
-いままでPyTorchで使っていたモデルファイル（`.pth`,`.pt`）に代替するものが`.ckpt`というファイルである。  
+今までPyTorchで使っていたモデルファイル（`.pth`,`.pt`）に代替するものが`.ckpt`というファイルである。  
 
 まずはcheck_point_save.pyについて説明する。  
-この機能は`pytorch_lightning.callbacks`からインポートできる `ModelCheckpoint`というモジュールである。
+このcheck point機能は`pytorch_lightning.callbacks`からインポートできる `ModelCheckpoint`というモジュールである。
 前述の`trainer`の機能に`trainer.save_checkpoint(PATH)`という機能があるが、この機能は学習を終えた最終的な`.ckpt`だけを保存する。  
 しかし、`ModelCheckpoint`を用いると、様々なカスタマイズができる。  L.174のように、以下のように設定したmoduleをtrainer設定時に指定するだけで良い。
 
@@ -129,6 +129,27 @@ pytorch_lightning.Trainer().test(load_model)
 
 `TRIGERS=YOUR_MODEL_TRIGERS`では設計したモデルの`__init__()`の引数を指定すれば良い。注意が必要なのはこれらの引数を`Model(TRIGERS=YOUR_MODEL_TRIGERS).load_from_checkpoint(PATH, map_location=torch.device("cpu"))`のような指定の仕方ができないことである。必ず`.load_from_checkpoint()`内で指定する必要がある。
 
+### QuantizationAwareTraining
+
+本機能は、PyTorchの[Quantization Aware Training](https://pytorch.org/docs/stable/quantization.html#quantization-aware-training)を利用したものである。  
+モデルの量子化は、浮動小数点精度よりも低いビット幅（INT8やFLOAT16など）で計算やテンソルの格納を行うことで、推論の高速化とメモリ要件の低減を可能にする。  
+Quantization Aware Training（QAT）は、トレーニング中の量子化の効果を模倣したものである。計算は後の量子化の影響が考慮しつつ浮動小数点精度で実行される。重みと活性化関数は、トレーニングが完了したときに、推論のためだけに低精度に量子化される。
+該当スクリプトは、quant_with_only_lightning.pyである。  
+以下に本機能の設定例を示す。
+```
+qcb = QuantizationAwareTraining(
+    # specification of quant estimation quality
+    observer_type="histogram",
+    # specify which layers shall be merged together to increase efficiency
+    modules_to_fuse=[(f"layer_{i}", f"layer_{i}a") for i in range(2)],
+    # make your model compatible with all original input/outputs, in such case the model is wrapped in a shell with entry/exit layers.
+    input_compatible=True,
+)
+```
+上記のように、主にこの三つの引数の指定をしていれば問題はない。使い方は前述のcheck pointと同様に`trainer(callbacks=qcb)`と記述する。`modules_to_fuse`の機能も備わっているので、[対応するレイヤ](https://pytorch.org/tutorials/recipes/fuse.html)をここで設定できる。  
+
+以上に述べた以外にもCallbackには様々な機能がある。残りの機能の詳細は`python callbacks_lightning.py`を実行し、`callbacks_info`を参照されたい。
+
 ## 量子化
 量子化について、その後の推論の際に、QuantizedCPUで扱えない学習層に注意が必要である。  
 （例：MnistではQuantizedCPUで扱えない`torch.nn.functional.log_softmax(x, dim=1)`を`forward()`内で使用するため、除外した。）  
@@ -143,6 +164,9 @@ PyTorch QAT(QuantizationAwareTraining), PyTorch PTQ(Post Training Quantization),
 | ①  | PyToch QAT  | 推論不可 | 推論不可 | 保存可 |
 | ②  | PyToch PTQ  | 推論不可 | 推論不可 | 保存可 |
 | ③  | PyTorchLightning QAT callbacks  | 推論可 | 推論可 | 保存可 |
+
+
+表中の①②③の確認はそれぞれ、quant_lightning_qat.py、quant_lightning_ptq.py、quant_with_only_lightning.pyを用いて確認した。
 
 # Pytorch-Lightning-Introduction (English)
 
@@ -270,6 +294,28 @@ Trainer().test(load_model)
 
 In `TRIGERS=YOUR_MODEL_TRIGERS`, you can specify the arguments of `__init__()` for the model you designed. Note that you can't specify these arguments like `Model(TRIGERS=YOUR_MODEL_TRIGERS).load_from_checkpoint(PATH, map_location=torch.device("cpu")))`. You should always specify it in `.load_from_checkpoint()`.
 
+There are many more features of Callback than mentioned above. For details on the rest, run `python callbacks_lightning.py` and look at `callbacks_info`.
+
+### QuantizationAwareTraining
+
+This function is based on PyTorch's [Quantization Aware Training](https://pytorch.org/docs/stable/quantization.html#quantization-aware-training).  
+Quantization of the model allows faster inference and reduced memory requirements by computing and storing tensors with bit widths lower than floating point precision (such as INT8 or FLOAT16).  
+Quantization Aware Training (QAT) mimics the effects of quantization during training. The computation is performed in floating-point precision, taking into account the effects of later quantization. The weights and activation functions are quantized to a lower precision when training is complete, just for inference.
+The corresponding script is quant_with_only_lightning.py.  
+An example of the configuration of this function is shown below.
+````
+qcb = QuantizationAwareTraining(
+    # specification of quant estimation quality
+    observer_type="histogram",
+    # specify which layers shall be merged together to increase efficiency
+    modules_to_fuse=[(f "layer_{i}", f "layer_{i}a") for i in range(2)],
+    # make your model compatible with all original input/outputs, in such case the model is wrapped in a shell with entry/exit layers.
+    input_compatible=True,
+)
+````
+As shown above, there is no problem if you specify these three main arguments. The usage is the same as the above check point, `trainer(callbacks=qcb)`. It also has `modules_to_fuse` function, so you can set [the layer to be fused](https://pytorch.org/tutorials/recipes/fuse.html) here.
+
+
 ## Quantization
 
 For quantization, we need to pay attention to the learning layers that cannot be handled by the 'QuantizedCPU' during the subsequent inference.  
@@ -286,3 +332,4 @@ The results are shown in the table below.
 | ②  | PyToch PTQ  | Unavailable | Unavailable | Available |
 | ③  | PyTorchLightning QAT callbacks  | Available | Available | Available |
 
+①, ②, and ③ in the table were checked using quant_lightning_qat.py, quant_lightning_ptq.py, and quant_with_only_lightning.py, respectively.
