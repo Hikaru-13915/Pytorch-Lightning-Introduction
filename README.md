@@ -4,10 +4,10 @@
 本リポジトリは、PyTorch Lightningの使用方法を簡易なexampleソースとともに説明するものであり、  
 構成は以下の通りである。  
 
-- [Lighitningの基本的な使い方](Lighitningの基本的な使い方)
-- [callback機能](callback機能)
-- [logger機能](logger機能)
-- [量子化について](量子化について)
+- [Lighitningの基本的な使い方](#Lighitningの基本的な使い方)
+- [callback機能](#callback機能)
+- [logger機能](#logger機能)
+- [量子化について](#量子化について)
 
 
 ## Lighitningの基本的な使い方
