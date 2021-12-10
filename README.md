@@ -155,6 +155,25 @@ qcb = QuantizationAwareTraining(
 実験を行う際に欠かせないログ機能。PyTorch Lightningでは様々なログ機能が用意されている。詳細は`python loggers_lightning.py`を実行し、`loggers_info`を参照されたい。  
 loggerの使い方はcallbackに同じく、`trainer`の引数に`logger=YOURLOGGER`と指定する。また、logger機能の一つ`CSVLogger`をBasic_usage_of_lightning.pyで使用している。MNISTを15エポック学習させ、ログ結果を描画したものが以下の通り。
 
+| Epochs | train_loss / valid_loss | train_acc / valid_acc |
+| :-------------: | :-------------: |  :-------------: |
+| 0 | 0.195703 / 0.059257 | 0.934743 / 0.981408 |
+| 1 | 0.139765 / 0.044663 | 0.960478 / 0.986155 |
+| 2 | 0.061755 / 0.038824 | 0.980699 / 0.988331 |
+| 3 | 0.095869 / 0.034867 | 0.971507 / 0.988528 |
+| 4 | 0.041405 / 0.036595 | 0.988715 / 0.988924 |
+| 5 | 0.040567 / 0.035809 | 0.988971 / 0.989913 |
+| 6 | 0.047978 / 0.031257 | 0.988051 / 0.990309 |
+| 7 | 0.029516 / 0.035104 | 0.990809 / 0.989913 |
+| 8 | 0.045085 / 0.036301 | 0.985294 / 0.989517 |
+| 9 | 0.033979 / 0.041194 | 0.986400 / 0.989715 |
+| 10 | 0.031562 / 0.036442 | 0.991728 / 0.990309 |
+| 11 | 0.044761 / 0.031285 | 0.986213 / 0.991100 |
+| 12 | 0.020568 / 0.037785 | 0.992647 / 0.991495 |
+| 13 | 0.029908 / 0.034707 | 0.992647 / 0.991495 |
+| 14 | 0.024699 / 0.034015 | 0.993056 / 0.990506 |
+| Graph(Epoch-score)  | ![](./loss.png) | ![](./acc.png)|
+
 
 このCSVにログを残しスコアを可視化するloggerの使い方の一例からわかるように、logger機能はカスタマイズ次第で研究開発で非常に役立つ可能性がある。
 
@@ -328,6 +347,26 @@ As shown above, there is no problem if you specify these three main arguments. T
 
 Logging is an essential part of running experiments, and PyTorch Lightning provides a variety of logging features. For details, run `python loggers_lightning.py` and refer to `loggers_info`.  
 The usage of logger is the same as callback, specify `logger=YOURLOGGER` as an argument of `trainer`. Also, one of the logger functions, `CSVLogger`, is used in Basic_usage_of_lightning.py. 15 epochs of training owith MNIST and the log results are drawn as follows.
+
+| Epochs | train_loss / valid_loss | train_acc / valid_acc |
+| :-------------: | :-------------: |  :-------------: |
+| 0 | 0.195703 / 0.059257 | 0.934743 / 0.981408 |
+| 1 | 0.139765 / 0.044663 | 0.960478 / 0.986155 |
+| 2 | 0.061755 / 0.038824 | 0.980699 / 0.988331 |
+| 3 | 0.095869 / 0.034867 | 0.971507 / 0.988528 |
+| 4 | 0.041405 / 0.036595 | 0.988715 / 0.988924 |
+| 5 | 0.040567 / 0.035809 | 0.988971 / 0.989913 |
+| 6 | 0.047978 / 0.031257 | 0.988051 / 0.990309 |
+| 7 | 0.029516 / 0.035104 | 0.990809 / 0.989913 |
+| 8 | 0.045085 / 0.036301 | 0.985294 / 0.989517 |
+| 9 | 0.033979 / 0.041194 | 0.986400 / 0.989715 |
+| 10 | 0.031562 / 0.036442 | 0.991728 / 0.990309 |
+| 11 | 0.044761 / 0.031285 | 0.986213 / 0.991100 |
+| 12 | 0.020568 / 0.037785 | 0.992647 / 0.991495 |
+| 13 | 0.029908 / 0.034707 | 0.992647 / 0.991495 |
+| 14 | 0.024699 / 0.034015 | 0.993056 / 0.990506 |
+| Graph(Epoch-score)  | ![](./loss.png) | ![](./acc.png)|
+
 
 
 As you can see from this example of how to use the logger to keep logs in CSV and visualize the scores, the logger function can be very useful in research and development depending on customization.  
