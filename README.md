@@ -1,6 +1,6 @@
 # PyTorch-Lightning-Introduction
 
-[__*English follows Japanese*__](#Discription in English)
+[__*English follows Japanese*__](#Discription-in-English)
 
 本リポジトリは、PyTorch Lightningの使用方法を簡易なexampleソースとともに説明するものであり、  
 構成は以下の通りである。  
@@ -208,10 +208,10 @@ This repository is for explanation of how to use PyTorch Lightning with simple e
 
 The configuration is as follows.  
 
-- [Basic usage of Lighitning](#Basic)
-- [callback function](#callback)
-- [logger function](#logger)
-- [About quantization](#About)
+- [Basic usage of Lighitning](#Basic-usage-of-Lighitning)
+- [callback function](#callback-function)
+- [logger function](#logger-function)
+- [About quantization](#About-quantizaton)
 
 
 ## Basic usage of Lighitning
@@ -219,9 +219,9 @@ The configuration is as follows.
 The Basic_usage_of_lightning.py file in this repository describes the basic usage of PyTorch Lightning.    
 The general steps are basically the same as for PyTorch.
 
-- [Model design](#Model)
-- [Set up the device and learning environment](#Set)
-- [Start learning](#Start)
+- [Model design](#Model-design)
+- [Set up the device and learning environment](#Set-up-the-device-and-learning-environment)
+- [Start learning](#Start-learning)
 
 Model design is the biggest step in model learning with PyTorchLightning.
 In comparison, setting up the device and learning environment, and learning itself, can be implemented with a very simple description.
@@ -289,7 +289,7 @@ This is the basic usage of PyTorch Lightning.
 
 
 ## callback functions
-PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](#check) point and [#QuantizationAwareTraining](QuantizationAwareTraining).
+PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](#check-point) point and [#QuantizationAwareTraining](QuantizationAwareTraining).
 
 ### check point
 The check point is a save function, so to speak, and has some useful features that the familiar PyTorch `torch.save(Model.state_dict(), PATH)` does not have.  
