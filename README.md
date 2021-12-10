@@ -1,6 +1,6 @@
 # PyTorch-Lightning-Introduction
 
-[__*English follows Japanese*__](#Discription)
+[__*English follows Japanese*__](#Discription in English)
 
 本リポジトリは、PyTorch Lightningの使用方法を簡易なexampleソースとともに説明するものであり、  
 構成は以下の通りである。  
