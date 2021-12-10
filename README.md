@@ -172,7 +172,7 @@ loggerの使い方はcallbackに同じく、`trainer`の引数に`logger=YOURLOG
 | 12 | 0.020568 / 0.037785 | 0.992647 / 0.991495 |
 | 13 | 0.029908 / 0.034707 | 0.992647 / 0.991495 |
 | 14 | 0.024699 / 0.034015 | 0.993056 / 0.990506 |
-| Graph(Epoch-score)  | ![](./loss.png) | ![](./acc.png)|
+| Graph | ![](./loss.png) | ![](./acc.png)|
 
 
 このCSVにログを残しスコアを可視化するloggerの使い方の一例からわかるように、logger機能はカスタマイズ次第で研究開発で非常に役立つ可能性がある。
@@ -365,7 +365,7 @@ The usage of logger is the same as callback, specify `logger=YOURLOGGER` as an a
 | 12 | 0.020568 / 0.037785 | 0.992647 / 0.991495 |
 | 13 | 0.029908 / 0.034707 | 0.992647 / 0.991495 |
 | 14 | 0.024699 / 0.034015 | 0.993056 / 0.990506 |
-| Graph(Epoch-score)  | ![](./loss.png) | ![](./acc.png)|
+| Graph | ![](./loss.png) | ![](./acc.png)|
 
 
 
