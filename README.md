@@ -1,5 +1,5 @@
 # PyTorch-Lightning-Introduction
-[__*English follows Japanese*__](#Pytorch-Lightning-Introduction(English))
+[__*English follows Japanese*__](#Pytorch-Lightning)
 
 本リポジトリは、PyTorch Lightningの使用方法を簡易なexampleソースとともに説明するものであり、  
 構成は以下の通りである。  
@@ -15,9 +15,9 @@
 本リポジトリ内 Basic_usage_of_lightning.py に基本的なPyTorchLightningの使い方記載している。    
 大まかな手順としては、PyTorchと基本的には同じである。
 
-- [モデル設計](モデル設計)
-- [デバイスや学習環境の設定](デバイスや学習環境の設定)
-- [学習開始](学習開始)
+- [モデル設計](#モデル設計)
+- [デバイスや学習環境の設定](#デバイスや学習環境の設定)
+- [学習開始](#学習開始)
 
 PyTorchLightningによるモデル学習において、モデル設計が最も大きなステップである。
 それに比べ、デバイスや学習環境の設定や学習そのものは非常に簡易な記述で実装することができる。
@@ -82,7 +82,7 @@ PyTorchLightningでは、学習のモデル以外の設定を`pytorch_lightning.
 以上がPyTorch Lightningの基本的な使い方である。
 
 ## callback機能
-PyTorch Lightningは非常にカスタマイズ性が高く、その中でも[check point](check-pointについて)と[QuantizationAwareTraining](QuantizationAwareTrainingについて)という機能について紹介する。  
+PyTorch Lightningは非常にカスタマイズ性が高く、その中でも[check point](#check-pointについて)と[QuantizationAwareTraining](#QuantizationAwareTrainingについて)という機能について紹介する。  
 
 ### check-pointについて
 check pointは、いわば保存機能である。PyTorchでお馴染みの`torch.save(Model.state_dict(), PATH)`にない便利な機能がある。  
@@ -196,16 +196,16 @@ PyTorch QAT(QuantizationAwareTraining), PyTorch PTQ(Post Training Quantization),
 
 表中の①②③の確認はそれぞれ、quant_lightning_qat.py、quant_lightning_ptq.py、quant_with_only_lightning.pyを用いて確認した。
 
-# Pytorch-Lightning-Introduction(English)
+# Pytorch-Lightning Introduction(English)
 
 This repository is for explanation of how to use PyTorch Lightning with simple examples
 
 The configuration is as follows.  
 
-- [Basic usage of Lighitning](Basic)
-- [callback function](callback)
-- [logger function](logger)
-- [About quantization](About)
+- [Basic usage of Lighitning](#Basic)
+- [callback function](#callback)
+- [logger function](#logger)
+- [About quantization](#About)
 
 
 ## Basic usage of Lighitning
@@ -213,9 +213,9 @@ The configuration is as follows.
 The Basic_usage_of_lightning.py file in this repository describes the basic usage of PyTorch Lightning.    
 The general steps are basically the same as for PyTorch.
 
-- [Model design](Model)
-- [Set up the device and learning environment](Set)
-- [Start learning](Start)
+- [Model design](#Model)
+- [Set up the device and learning environment](#Set)
+- [Start learning](#Start)
 
 Model design is the biggest step in model learning with PyTorchLightning.
 In comparison, setting up the device and learning environment, and learning itself, can be implemented with a very simple description.
@@ -283,7 +283,7 @@ This is the basic usage of PyTorch Lightning.
 
 
 ## callback functions
-PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](check) point and [QuantizationAwareTraining](QuantizationAwareTraining).
+PyTorch Lightning is highly customizable, and we'll take a look at some of its features: [check](#check) point and [#QuantizationAwareTraining](QuantizationAwareTraining).
 
 ### check point
 The check point is a save function, so to speak, and has some useful features that the familiar PyTorch `torch.save(Model.state_dict(), PATH)` does not have.  
