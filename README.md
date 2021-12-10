@@ -202,7 +202,7 @@ PyTorch QAT(QuantizationAwareTraining), PyTorch PTQ(Post Training Quantization),
 ---
 ## Discription in English
 
-# Pytorch-Lightning Introduction
+## Pytorch-Lightning Introduction
 
 This repository is for explanation of how to use PyTorch Lightning with simple examples
 
