@@ -78,7 +78,7 @@ PyTorchLightningでは、学習のモデル以外の設定を`pytorch_lightning.
 上記の`pytorch_lightning.Trainer()`を設定したら（本スクリプトでは`trainer=pytorch_lightning.Trainer()`としている）、`学習はtrainer.fit(Model)`とするだけ。  
 モデル設計のステップで行った記述のおかげで、PyTorchでまわしていた学習ループが、たったの一行で行えるのがPyTorch Lightningの最も魅力的な点ともいえる。  
 また学習したモデルはPyTorchと同様に、`torch.save(Model.state_dict(), PATH)`で保存できる。  
-
+また、一度学習を終えて学習済モデルをロードして推論を行いたい場合は、`python Basic_usage_of_lightning.py --load_model MODEL_PATH`で実行する。
 以上がPyTorch Lightningの基本的な使い方である。
 
 ## callback機能
@@ -149,6 +149,15 @@ qcb = QuantizationAwareTraining(
 上記のように、主にこの三つの引数の指定をしていれば問題はない。使い方は前述のcheck pointと同様に`trainer(callbacks=qcb)`と記述する。`modules_to_fuse`の機能も備わっているので、[対応するレイヤ](https://pytorch.org/tutorials/recipes/fuse.html)をここで設定できる。  
 
 以上に述べた以外にもCallbackには様々な機能がある。残りの機能の詳細は`python callbacks_lightning.py`を実行し、`callbacks_info`を参照されたい。
+
+## logger機能
+
+実験を行う際に欠かせないログ機能。PyTorch Lightningでは様々なログ機能が用意されている。詳細は`python loggers_lightning.py`を実行し、`loggers_info`を参照されたい。  
+loggerの使い方はcallbackに同じく、`trainer`の引数に`logger=YOURLOGGER`と指定する。また、logger機能の一つ`CSVLogger`をBasic_usage_of_lightning.pyで使用している。MNISTを15エポック学習させ、ログ結果を描画したものが以下の通り。
+
+
+このCSVにログを残しスコアを可視化するloggerの使い方の一例からわかるように、logger機能はカスタマイズ次第で研究開発で非常に役立つ可能性がある。
+
 
 ## 量子化
 量子化について、その後の推論の際に、QuantizedCPUで扱えない学習層に注意が必要である。  
@@ -242,8 +251,8 @@ For more information, please refer to the [PyTorchLIghtning official website](ht
 After setting `pytorch_lightning.Trainer()` above (in this script we set `trainer=pytorch_lightning.Trainer()`), all we have to do is `trainer.fit(Model)`.  
 One of the most attractive features of PyTorch Lightning is that, thanks to the model design step we discribed former, we can do the training loop we used to do in PyTorch with just one line.  
 You can also save the trained model with `torch.save(Model.state_dict(), PATH)`, just like in PyTorch.  
-
-This is the basic usage of PyTorch Lightning.
+If you want to load a trained model to perform inference once it has been trained, run `python Basic_usage_of_lightning.py --load_model MODEL_PATH`.  
+This is the basic usage of PyTorch Lightning.  
 
 
 ## callback functions
@@ -314,6 +323,14 @@ qcb = QuantizationAwareTraining(
 )
 ````
 As shown above, there is no problem if you specify these three main arguments. The usage is the same as the above check point, `trainer(callbacks=qcb)`. It also has `modules_to_fuse` function, so you can set [the layer to be fused](https://pytorch.org/tutorials/recipes/fuse.html) here.
+
+## logger functions
+
+Logging is an essential part of running experiments, and PyTorch Lightning provides a variety of logging features. For details, run `python loggers_lightning.py` and refer to `loggers_info`.  
+The usage of logger is the same as callback, specify `logger=YOURLOGGER` as an argument of `trainer`. Also, one of the logger functions, `CSVLogger`, is used in Basic_usage_of_lightning.py. 15 epochs of training owith MNIST and the log results are drawn as follows.
+
+
+As you can see from this example of how to use the logger to keep logs in CSV and visualize the scores, the logger function can be very useful in research and development depending on customization.  
 
 
 ## Quantization
